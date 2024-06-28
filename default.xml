@@ -2,11 +2,32 @@
 <manifest>
 
   <remote  name="aosp"
-           fetch=".."
+           fetch="https://android.googlesource.com/"
            review="https://android-review.googlesource.com/" />
   <default revision="refs/tags/android-14.0.0_r50"
            remote="aosp"
-           sync-j="4" />
+           sync-j="4"
+           sync-c="true" />
+
+  <!-- DroidX-UI Remote -->
+  <remote name="droidx"
+        fetch="https://github.com/DroidX-UI"
+        sync-j="8"
+        revision="14_v3" />
+
+  <remote name="droidx-devices"
+        fetch="https://github.com/DroidX-UI-Devices"
+        revision="14_v3" />
+
+  <remote name="droidx-gitlab"
+        fetch="https://gitlab.com/DroidX-UI"
+        sync-j="8"
+        revision="14_v3" />
+
+  <!-- LineageOS Github -->
+  <remote  name="lineage"
+          fetch="https://github.com/LineageOS"
+          revision="lineage-21.0" />
 
   <superproject name="platform/superproject" remote="aosp" revision="android-14.0.0_r50"/>
   <contactinfo bugurl="go/repo-bug" />
@@ -1397,4 +1418,9 @@
   <project path="trusty/vendor/google/aosp" name="trusty/vendor/google/aosp" groups="trusty" >
     <copyfile src="lk_inc.mk" dest="lk_inc.mk" />
   </project>
+
+  <include name="snippets/remove.xml" />
+  <include name="snippets/droidx.xml" />
+  <include name="snippets/lineage.xml" />
+  <include name="snippets/hardware.xml" />
 </manifest>
